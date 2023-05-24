@@ -15,25 +15,25 @@ test('renders player photo', () => {
 
 test('renders mental stat bar', () => {
     render(<App />);
-    const statBar = screen.getByText('mental');
+    const statBar = screen.getByText('Mental');
     expect(statBar).toBeInTheDocument();
 });
 
 test('renders game sense stat bar', () => {
     render(<App />);
-    const statBar = screen.getByText('game sense');
+    const statBar = screen.getByText('Game Sense');
     expect(statBar).toBeInTheDocument();
 });
 
 test('renders mechanics stat bar', () => {
     render(<App />);
-    const statBar = screen.getByText('mechanics');
+    const statBar = screen.getByText('Mechanics');
     expect(statBar).toBeInTheDocument();
 });
 
 test('renders physical health stat bar', () => {
     render(<App />);
-    const statBar = screen.getByText('physical health');
+    const statBar = screen.getByText('Physical Health');
     expect(statBar).toBeInTheDocument();
 });
 
