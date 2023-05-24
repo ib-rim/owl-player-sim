@@ -1,8 +1,68 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders help button', () => {
+    render(<App />);
+    const helpButton = screen.getByText("?");
+    expect(helpButton).toBeInTheDocument();
+});
+
+test('renders player photo', () => {
+    render(<App />);
+    const playerPhoto = document.querySelector("img");
+    expect(playerPhoto.src).toContain("images.blz-contentstack");
+});
+
+test('renders mental stat bar', () => {
+    render(<App />);
+    const statBar = screen.getByText('mental');
+    expect(statBar).toBeInTheDocument();
+});
+
+test('renders game sense stat bar', () => {
+    render(<App />);
+    const statBar = screen.getByText('game sense');
+    expect(statBar).toBeInTheDocument();
+});
+
+test('renders mechanics stat bar', () => {
+    render(<App />);
+    const statBar = screen.getByText('mechanics');
+    expect(statBar).toBeInTheDocument();
+});
+
+test('renders physical health stat bar', () => {
+    render(<App />);
+    const statBar = screen.getByText('physical health');
+    expect(statBar).toBeInTheDocument();
+});
+
+test('renders scrim button', () => {
+    render(<App />);
+    const actionButton = screen.getByText(/scrim/i);
+    expect(actionButton).toBeInTheDocument();
+});
+
+test('renders exercise button', () => {
+    render(<App />);
+    const actionButton = screen.getByText(/exercise/i);
+    expect(actionButton).toBeInTheDocument();
+});
+
+test('renders relax button', () => {
+    render(<App />);
+    const actionButton = screen.getByText(/relax/i);
+    expect(actionButton).toBeInTheDocument();
+});
+
+test('renders ranked button', () => {
+    render(<App />);
+    const actionButton = screen.getByText(/ranked/i);
+    expect(actionButton).toBeInTheDocument();
+});
+
+test('renders change player name button', () => {
+    render(<App />);
+    const actionButton = screen.getByText(/change player name/i);
+    expect(actionButton).toBeInTheDocument();
 });
