@@ -1,6 +1,8 @@
+import './ActionButton.css';
+
 function ActionButton(props) {
     return (
-        <button>{props.children}</button>
+        <button className="action-button">{props.children}</button>
     ) 
 }
 
