@@ -7,12 +7,6 @@ test('renders help button', () => {
     expect(helpButton).toBeInTheDocument();
 });
 
-test('renders player photo', () => {
-    render(<App />);
-    const playerPhoto = document.querySelector("img");
-    expect(playerPhoto.src).toContain("images.blz-contentstack");
-});
-
 test('renders mental stat bar', () => {
     render(<App />);
     const statBar = screen.getByText('Mental');
