@@ -15,7 +15,7 @@ function App() {
     const [team, setTeam] = useState({});
 
     useEffect(() => {
-        let data = JSON.parse(localStorage.getItem("owlData"))
+        let data = JSON.parse(localStorage.getItem("owlData"));
         if (!data) {
             getAccessToken();
         }
