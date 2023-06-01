@@ -14,6 +14,13 @@ function App() {
     const [teams, setTeams] = useState({});
     const [team, setTeam] = useState({});
 
+    const [maxBarValue, setMaxBarValue] = useState(50);
+
+    const [mentalValue, setMentalValue] = useState(maxBarValue);
+    const [gameSenseValue, setGameSenseValue] = useState(maxBarValue);
+    const [mechanicsValue, setMechanicsValue] = useState(maxBarValue);
+    const [physicalHealthValue, setPhysicalHealthValue] = useState(maxBarValue);
+
     useEffect(() => {
         let data = JSON.parse(localStorage.getItem("owlData"));
         if (!data) {
@@ -80,6 +87,37 @@ function App() {
         handleData(JSON.parse(localStorage.getItem("owlData")));
     }
 
+    const scrim = () => {
+        handleValueChange(gameSenseValue + 3, setGameSenseValue);
+        handleValueChange(physicalHealthValue - 3, setPhysicalHealthValue);
+    }
+
+    const exercise = () => {
+        handleValueChange(physicalHealthValue + 3, setPhysicalHealthValue);
+        handleValueChange(mechanicsValue - 3, setMechanicsValue);
+    }
+
+    const relax = () => {
+        handleValueChange(mentalValue + 3, setMentalValue);
+        handleValueChange(gameSenseValue - 3, setGameSenseValue);
+    }
+
+    const ranked = () => {
+        handleValueChange(mechanicsValue + 3, setMechanicsValue);
+        handleValueChange(mentalValue - 3, setMentalValue);
+    }
+
+    //Limit bar value to stay between 0 and 50
+    const handleValueChange = (newValue, fn) => {
+        if (newValue > maxBarValue) {
+            newValue = maxBarValue;
+        }
+        else if (newValue < 0) {
+            newValue = 0;
+        }
+        fn(newValue);
+    }
+
     return (
         <div className="App">
             <div className="player-display">
@@ -101,17 +139,17 @@ function App() {
                 }
             </div>
             <div className="player-stats">
-                <Bar value="50">Mental</Bar>
-                <Bar value="50">Game Sense</Bar>
-                <Bar value="50">Mechanics</Bar>
-                <Bar value="50">Physical Health</Bar>
+                <Bar max={maxBarValue} value={mentalValue}>Mental</Bar>
+                <Bar max={maxBarValue} value={gameSenseValue}>Game Sense</Bar>
+                <Bar max={maxBarValue} value={mechanicsValue}>Mechanics</Bar>
+                <Bar max={maxBarValue} value={physicalHealthValue}>Physical Health</Bar>
             </div>
             <div className="actions">
                 <div className="action-buttons">
-                    <ActionButton>Scrim</ActionButton>
-                    <ActionButton>Exercise</ActionButton>
-                    <ActionButton>Relax</ActionButton>
-                    <ActionButton>Ranked</ActionButton>
+                    <ActionButton onClick={() => scrim()}>Scrim</ActionButton>
+                    <ActionButton onClick={() => exercise()}>Exercise</ActionButton>
+                    <ActionButton onClick={() => relax()}>Relax</ActionButton>
+                    <ActionButton onClick={() => ranked()}>Ranked</ActionButton>
                     <button onClick={() => setShowNameInput(true)}>Change player name</button>
                 </div>
                 <div className="log">
