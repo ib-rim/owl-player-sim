@@ -41,11 +41,6 @@ button:hover {
     background-size: cover;
 }
 
-.team-logo {
-    height: 35px;
-    aspect-ratio: 1;
-}
-
 .player-photo {
     display: block;
     height: 300px;
